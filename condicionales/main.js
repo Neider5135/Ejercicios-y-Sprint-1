@@ -214,6 +214,7 @@ function Adivinanzas() {
   let numeroIngresado = parseInt(prompt("Ingresa un número del 1 al 10"));
   if (isNaN(numeroIngresado) || numeroIngresado < 1 || numeroIngresado > 10) {
     alert("Ingresa solo números positivos del 1 al 10");
+    Adivinanzas()
   } else if (numeroIngresado == numeroIncognita) {
     alert("Acertaste!!");
     Volver = prompt("¿Quieres volver a jugar? Responde solo con si o no").toLocaleLowerCase().trim()
