@@ -114,81 +114,129 @@ if (parseInt(usuario.edad) >= 18) {
 } else {
     alert ("No tienes la edad necesaria")
 }
-*/
+
 
 // 7
 
-let  Inicio = prompt("Hola, para iniciar, dale aceptar");
+let Inicio = prompt("Hola, para iniciar, dale aceptar");
 
-if (Inicio == NaN){
-    permitirEntrada()
-}
-else if (Inicio.toLowerCase().trim() == "hola"){
-    alert("Gracias por saludar")
-    permitirEntrada()
-}
-else{
-    alert("Gracias por visitarnos")
+if (Inicio == "null" || "NaN" || "undefined" || "") {
+  permitirEntrada();
+} else if (Inicio.toLowerCase().trim() == "hola") {
+  alert("Gracias por saludar");
+  permitirEntrada();
+} else {
+  alert("Gracias por visitarnos");
 }
 
 function permitirEntrada() {
   const nombre = prompt("Nombre").toLowerCase().trim();
   let entrada = prompt(
     "¿Tienes entrada? Escribe si, s o true si así es de lo contrario escribe no, n o false"
-  )
-    .trim()
-    .toLowerCase();
-    if (!(entrada == "si") || (entrada == "s") || (entrada == "true") || (entrada == "n") || (entrada == "no") || (entrada == "false")){
-        alert ("Ingresa solo valores permitidos"),
-        permitirEntrada ()
-    }
-  let tipoEntrada = parseInt(
-    prompt(
-      "¿Qué tipo de entrada tienes? Escribe 1 para vip, 2 para normal y 3 si no tienes"
-    )
-  );
-  if (nombre.startsWith("neider")) {
-    alert("Tienes entrada libre tocayo, bienvenido/a");
-  } else if (tipoEntrada === 1) {
-    alert("Tienes pase libre VIP, bienvenido/a");
-  } else {
-    if (entrada == "si" || entrada == "s" || entrada == "true") {
-      Acepta = prompt("¿Desea usar la entrada? Responda solo con si o no").trim
-        .toLowerCase;
-      if (Acepta == "si") {
-        alert("Bienvenido/a");
-      } else if (Acepta == "no") {
-        alert("Gracias por visitarnos");
+  ).toLocaleLowerCase().trim();
+  if (
+    !((entrada == "si") ||
+    (entrada == "s") ||
+    (entrada == "true") ||
+    (entrada == "n") ||
+    (entrada == "no") ||
+    (entrada == "false"))
+  ) {
+    alert("Ingresa solo valores permitidos"), permitirEntrada();
+  } else if (entrada == "no" || entrada == "n" || entrada == "false") {
+    let dinero = parseInt(
+      prompt("¿Cuánto dinero dispones? Ingrese solo números")
+    );
+    let Compra = prompt(
+      "¿Desea comprar una entrada? Responda solo con si o no"
+    ).toLocaleLowerCase().trim()
+    if (Compra == "si") {
+      if (dinero >= 1000) {
+        alert("Compra aprobada! Bienvenido " + nombre);
+        dinero -= 1000;
+        alert("Ahora tienes " + dinero + "$");
+      } else if (dinero < 1000) {
+        alert("Te hacen falta ", 1000 - dinero, "$");
+        alert("Compra no aprobada, gracias por visitarnos");
+      } else if (dinero < 0) {
+        alert("Ingresa solo números positivos en dinero");
       } else {
-        alert("Ingrese solo si o no");
-        permitirEntrada ()
+        alert("Ingresa solo números en dinero");
+        permitirEntrada();
       }
-    } else if (entrada == "no" || entrada == "n" || entrada == "false") {
-       let dinero = parseInt(prompt("¿Cuánto dinero dispones? Ingrese solo números"))
-      let Compra = prompt("¿Desea comprar una entrada? Responda solo con si o no");
-        if (Compra == "si") {
-        if (dinero >= 1000) {
-          alert("Compra aprobada! Bienvenido");
-          dinero -= 1000
-          alert ("Ahora tienes " + dinero + "$")
-        } else if (dinero < 1000) {
-            alert ("Te hacen falta ", 1000 - dinero, "$")
-          alert("Compra no aprobada, gracias por visitarnos");
-        } else if (dinero < 0) {
-            alert("Ingresa solo números positivos en dinero");
-        } else {
-          alert("Ingresa solo números en dinero");
-          permitirEntrada()
-        }
-      } else if (Compra == "no") {
-        alert("Gracias por visitarnos");
-      } else {
-        alert ("Ingrese solo valores permitidos en compra")
-        permitirEntrada ()
-      }
+    } else if (nombre.startsWith("neider")) {
+      alert("Tienes entrada libre tocayo, bienvenido/a " + nombre);
+    } else if (Compra == "no") {
+      alert("Gracias por visitarnos");
     } else {
-      alert("Ingrese solo valores permitidos en entrada");
-        permitirEntrada ()
+      alert("Ingrese solo valores permitidos en compra");
+      permitirEntrada();
+    }
+  } else {
+    let tipoEntrada = parseInt(
+      prompt(
+        "¿Qué tipo de entrada tienes? Escribe 1 para vip, 2 para normal"
+      )
+    );
+    if (nombre.startsWith("neider")) {
+      alert("Tienes entrada libre tocayo, bienvenido/a " + nombre);
+    } else if (tipoEntrada === 1) {
+      alert("Tienes pase libre VIP, bienvenido/a " + nombre);
+    } else {
+      if (entrada == "si" || entrada == "s" || entrada == "true") {
+        Acepta = prompt("¿Desea usar la entrada? Responda solo con si o no").trim()
+          .toLocaleLowerCase();
+        if (Acepta == "si") {
+          alert("Bienvenido/a " + nombre);
+        } else if (Acepta == "no") {
+          alert("Gracias por visitarnos");
+        } else {
+          alert("Ingrese solo si o no");
+          permitirEntrada();
+        }
+      }
+    }
+  }
+}
+*/
+
+//8
+
+let numeroIncognita = 1;
+
+let intentos = 2;
+
+alert("Juguemos, adivina mi número");
+
+Adivinanzas()
+
+function Adivinanzas() {
+  let numeroIngresado = parseInt(prompt("Ingresa un número del 1 al 10"));
+  if (isNaN(numeroIngresado) || numeroIngresado < 1 || numeroIngresado > 10) {
+    alert("Ingresa solo números positivos del 1 al 10");
+  } else if (numeroIngresado == numeroIncognita) {
+    alert("Acertaste!!");
+    Volver = prompt("¿Quieres volver a jugar? Responde solo con si o no").toLocaleLowerCase().trim()
+    if (Volver == "si"){
+      intentos = 2
+      Adivinanzas()
+    }
+    else if (Volver == "no" || Volver != "si"){
+      alert("¡Gracias por jugar!")
+    }
+  } else if (numeroIngresado != numeroIncognita && intentos > 0) {
+    alert("Tienes " + intentos + " intentos");
+    intentos -= 1;
+    Adivinanzas()
+  } else if (intentos == 0){
+    alert ("Fallaste")
+    Volver = prompt("¿Quieres volver a jugar? Responde solo con si o no").toLocaleLowerCase().trim()
+    if (Volver == "si"){
+      intentos = 2
+      Adivinanzas()
+    }
+    else if (Volver == "no" || Volver != "si"){
+      alert("¡Gracias por jugar!")
     }
   }
 }
