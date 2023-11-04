@@ -271,14 +271,16 @@ if (isNaN(edad9) || edad9 < 0){
   conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
 }
 }
-*/
+
 
 //10
+
+let tablero1 = ["puntos j1",0]
+let tablero2 = ["puntos j2",0]
 
 jugarPiedraPapeloTijeras()
 
 function jugarPiedraPapeloTijeras() {
-  let tablero = [puntosJugador1 = puntosJugador1, puntosJugador2 = puntosJugador2]
   let jugador1 = prompt(
     "Jugador 1, ingresa una acción entre piedra papel o tijeras"
   )
@@ -299,7 +301,7 @@ function jugarPiedraPapeloTijeras() {
     alert("De nuevo!!")
     jugarPiedraPapeloTijeras()
     }
-
+  
   if (jugador1 == jugador2) {
     alert("De nuevo!!");
     jugarPiedraPapeloTijeras();
@@ -309,13 +311,18 @@ function jugarPiedraPapeloTijeras() {
     (jugador1 == "papel" && jugador2 == "piedra")
   ) {
     alert("Gana jugador 1");
-    tablero[0] += 1
-    alert (tablero)
+    tablero1[1] += 1
+    alert (tablero1)
+    alert (tablero2)
     jugarPiedraPapeloTijeras()
   } else {
     alert ("Gana jugador 2");
-    tablero[1] += 1
-    alert (tablero)
+    tablero2[1] += 1
+    alert (tablero2)
+    alert (tablero1)
     jugarPiedraPapeloTijeras()
   }
 }
+*/
+
+//11
