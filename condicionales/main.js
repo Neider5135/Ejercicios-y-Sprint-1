@@ -198,7 +198,7 @@ function permitirEntrada() {
     }
   }
 }
-*/
+
 
 //8
 
@@ -239,5 +239,83 @@ function Adivinanzas() {
     else if (Volver == "no" || Volver != "si"){
       alert("¡Gracias por jugar!")
     }
+  }
+}
+
+
+//9
+
+conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+
+function conseguirEdad() {
+if (isNaN(edad9) || edad9 < 0){
+  alert ("Ingresa solo números positivos")
+  conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+}else if (edad9 >= 0 && edad9 < 12){
+  alert ("Solo tienes " + edad9 + " años, eres un infante!")
+  conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+}else if (edad9 >= 13 && edad9 < 18){
+  alert ("Tienes " + edad9 + " años, eres adolecente")
+  conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+}else if (edad9 >= 19 && edad9 < 45){
+  alert ("Tienes " + edad9 + " años, eres un mayor joven")
+  conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+}else if (edad9 >= 46 && edad9 < 99){
+  alert ("Tienes " + edad9 + " años, eres un anciano")
+  if (edad9 < 60){
+    alert("Aunque no tanto")
+  }
+  conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+}else if (edad9 > 99){
+  alert ("¿En serio tienes " + edad9 + " años? Increible!")
+  conseguirEdad(edad9 = parseInt(prompt("¿Qué edad tienes?")))
+}
+}
+*/
+
+//10
+
+jugarPiedraPapeloTijeras()
+
+function jugarPiedraPapeloTijeras() {
+  let tablero = [puntosJugador1 = puntosJugador1, puntosJugador2 = puntosJugador2]
+  let jugador1 = prompt(
+    "Jugador 1, ingresa una acción entre piedra papel o tijeras"
+  )
+    .toLocaleLowerCase()
+    .trim();
+  if ((!(jugador1 == "piedra" || jugador1 == "papel" || jugador1 == "tijeras"))){
+    alert("Jugador 1 ha hecho trampa")
+    alert("De nuevo!!")
+    jugarPiedraPapeloTijeras()
+    } 
+  let jugador2 = prompt(
+    "Jugador 2, ingresa una acción entre piedra papel o tijeras"
+  )
+    .toLocaleLowerCase()
+    .trim();
+  if ((!(jugador2 == "piedra" || jugador2 == "papel" || jugador2 == "tijeras"))){
+    alert("Jugador 2 ha hecho trampa")
+    alert("De nuevo!!")
+    jugarPiedraPapeloTijeras()
+    }
+
+  if (jugador1 == jugador2) {
+    alert("De nuevo!!");
+    jugarPiedraPapeloTijeras();
+  }else if (
+    (jugador1 == "piedra" && jugador2 == "tijeras") ||
+    (jugador1 == "tijeras" && jugador2 == "papel") ||
+    (jugador1 == "papel" && jugador2 == "piedra")
+  ) {
+    alert("Gana jugador 1");
+    tablero[0] += 1
+    alert (tablero)
+    jugarPiedraPapeloTijeras()
+  } else {
+    alert ("Gana jugador 2");
+    tablero[1] += 1
+    alert (tablero)
+    jugarPiedraPapeloTijeras()
   }
 }
