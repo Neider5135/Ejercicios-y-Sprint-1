@@ -361,18 +361,89 @@ switch (colorElegido) {
     break;
 }
 
-*/
 
 //12
 
-let numer1 = prompt()
-let numer2 = prompt()
-let operacion = prompt()
-Calculadora()
+Interfaz()
 
-function Calculadora(numer1, numer2, operacion) {
-  if (operacion == "suma"){
-    let resultado = numer1 + numer2
-    alert ("el resultado de " + numer1 + " + " + numer2 + " es igual a " + resultado)
+function Interfaz() {
+  let nu1 = parseInt(prompt("Elige tu primer número"));
+  if (isNaN(nu1)) {
+    alert("Solo puedes ingresar números en esta casilla");
+    Interfaz()
+  } else {
+    let nu2 = parseInt(prompt("Elige tu segundo número"));
+    if (isNaN(nu2)) {
+      alert("Solo puedes ingresar números en esta casilla");
+      Interfaz()
+    } else {
+      let op = prompt("Elige tu operación, solo puedes elegir entre estas 4: suma, resta, división y multiplicación").toLocaleLowerCase().trim();
+      if (
+        !(op == "suma" ||
+        op == "resta" ||
+        op == "división" ||
+        op == "multiplicación" ||
+        op == "division" ||
+        op == "multiplicacion")
+      ) {
+        alert(
+          "Solo puedes poner estas 4 operaciones: suma, resta, multiplicación y división"
+        );
+        Interfaz ()
+      } else if (op == "division"){
+        op = "división"
+        Calculadora(nu1, nu2, op);
+      } else if (op == "multiplicacion"){
+        op = "multiplicación"
+        Calculadora(nu1, nu2, op);
+      } else {
+        Calculadora(nu1, nu2, op);
+      }
+    }
   }
 }
+
+function Calculadora(numer1, numer2, operacion) {
+  if (operacion == "suma") {
+    let resultado = numer1 + numer2;
+    alert(
+      "el resultado de " + numer1 + " + " + numer2 + " es igual a " + resultado
+    );
+    Interfaz()
+  } else if (operacion == "resta") {
+    resultado = numer1 - numer2;
+    alert(
+      "el resultado de " + numer1 + " - " + numer2 + " es igual a " + resultado
+    );
+    Interfaz()
+  } else if (operacion == "división") {
+    if (numer2 == 0) {
+      alert("No se puede dividir por cero");
+      Interfaz()
+    } else {
+      let resultado = numer1 / numer2;
+      alert(
+        "el resultado de " +
+          numer1 +
+          " / " +
+          numer2 +
+          " es igual a " +
+          resultado
+      );
+      Interfaz()
+    }
+  } else if (operacion == "multiplicación") {
+    let resultado = numer1 * numer2;
+    alert(
+      "el resultado de " + numer1 + " X " + numer2 + " es igual a " + resultado
+    );
+    Interfaz()
+  } else {
+    alert ("Revisa lo que ingresaste")
+    Interfaz()
+  }
+}
+
+*/
+
+//13
