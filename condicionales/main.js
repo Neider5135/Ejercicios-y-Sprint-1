@@ -323,6 +323,56 @@ function jugarPiedraPapeloTijeras() {
     jugarPiedraPapeloTijeras()
   }
 }
-*/
+
 
 //11
+
+let colorElegido = prompt("Di un color").toLocaleLowerCase().trim();
+
+if (colorElegido == "marron") {
+  colorElegido = "marrón"
+}
+
+switch (colorElegido) {
+  case "blanco":
+    alert("Falta de color");
+    break;
+  case "negro":
+    alert("Falta de color");
+    break;
+  case "verde":
+    alert("Color de la naturaleza");
+    break;
+  case "azul":
+    alert("El color del agua");
+    break;
+  case "Amarillo":
+    alert("El color del sol");
+    break;
+  case "rojo":
+    alert("El color del fuego");
+    break;
+  case "marrón":
+    alert("El color de la tierra");
+    break;
+
+  default:
+    alert("!Excelente elección¡ No lo teníamos pensado");
+    break;
+}
+
+*/
+
+//12
+
+let numer1 = prompt()
+let numer2 = prompt()
+let operacion = prompt()
+Calculadora()
+
+function Calculadora(numer1, numer2, operacion) {
+  if (operacion == "suma"){
+    let resultado = numer1 + numer2
+    alert ("el resultado de " + numer1 + " + " + numer2 + " es igual a " + resultado)
+  }
+}
