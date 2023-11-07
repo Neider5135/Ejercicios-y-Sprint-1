@@ -444,8 +444,6 @@ function Calculadora(numer1, numer2, operacion) {
   }
 }
 
-*/
-
 //13
 
 let dni = {};
@@ -670,3 +668,4 @@ function confirmador(confirmación) {
       break;
   }
 }
+*/
