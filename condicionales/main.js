@@ -447,3 +447,226 @@ function Calculadora(numer1, numer2, operacion) {
 */
 
 //13
+
+let dni = {};
+let nombre = undefined
+let numeroDoc = undefined
+let fechaNacimiento = undefined
+let altura = undefined
+let sexo = undefined
+
+pedirDatos();
+
+function pedirDatos() {
+  alert ("Ingresa los datos de tu documento de identidad")
+  obNombre();
+  obNacimiento();
+  obNumDoc();
+  obAltura();
+  obSexo();
+  obConsolidar();
+  let resultado = undefined;
+  if ((resultado = 1)) {
+    alert("Se ha registrado exitosamente");
+    console.table(dni);
+  } else if ((resultado = 2)) {
+    alert("Vuelve a intentarlo dentro de un mes");
+  } else {
+    alert("Hay un error");
+  }
+}
+
+function obNombre() {
+  nombre = prompt("Nombre completo").toLocaleUpperCase().trim();
+  let confirmación = prompt(
+    "Escribió: " + nombre + ", ¿Es correcto? Escribe si o no"
+  )
+    .toLocaleLowerCase()
+    .trim();
+  if (confirmación == "no") {
+    confirmación = 1;
+    confirmador(confirmación);
+  } else if (confirmación == "si") {
+    confirmador(confirmación);
+    dni[0] = ["Nombre", nombre];
+  } else {
+    alert("Ingresaste valor inválido");
+    obNacimiento();
+  }
+}
+
+function obNacimiento() {
+  alert("Ingresa la fecha de tu nacimiento, ingrese solo números");
+  fechaNacimiento = [
+    dia = parseInt(prompt("Día")),
+    mes = parseInt(prompt("Mes")),
+    año = parseInt(prompt("Año")),
+  ];
+  let confirmación = prompt(
+    "Escribió: ("+dia+"/"+mes+"/"+año+"), ¿Es correcto? Escribe si o no"
+  )
+    .toLocaleLowerCase()
+    .trim();
+  if (confirmación == "no") {
+    confirmación = 2;
+    confirmador(confirmación);
+  } else if (confirmación == "si") {
+    confirmador(confirmación);
+    dni[1] = ["Fecha de nacimiento", "("+dia+"/"+mes+"/"+año+")"];
+  } else {
+    alert("Ingresaste valor inválido");
+    obNacimiento();
+  }
+}
+
+function obNumDoc() {
+  numeroDoc = parseInt(
+    prompt(
+      "Ingrese su número de documento sin espacios ni carácteres adicionales"
+    )
+  );
+  if (isNaN(numeroDoc)) {
+    alert("Ingresó carácteres inválidos");
+  }
+  let confirmación = prompt(
+    "Escribió: " + numeroDoc + ", ¿Es correcto? Escribe si o no"
+  )
+    .toLocaleLowerCase()
+    .trim();
+  if (confirmación == "no") {
+    confirmación = 3;
+    confirmador(confirmación);
+  } else if (confirmación == "si") {
+    confirmador(confirmación);
+    dni[2] = ["Número de documento", numeroDoc];
+  } else {
+    alert("Ingresaste valor inválido");
+    obNumDoc();
+  }
+}
+
+function obAltura() {
+  altura = parseInt(
+    prompt("Ingresa tu altura en centímetros (Ingresa solo números)")
+  );
+  let confirmación = prompt(
+    "Escribió: " + altura + "cm, ¿Es correcto? Escribe si o no"
+  )
+    .toLocaleLowerCase()
+    .trim();
+  if (confirmación == "no") {
+    confirmación = 4;
+    confirmador(confirmación);
+  } else if (confirmación == "si") {
+    confirmador(confirmación);
+    dni[3] = ["Altura", altura];
+  } else {
+    alert("Ingresaste valor inválido");
+    obAltura();
+  }
+}
+
+function obSexo() {
+  sexo = parseInt(prompt("Ingrese su sexo según aparece en su documento 1 para masculino y 2 para femenino"))
+  if (isNaN(sexo) || sexo > 2 || sexo < 1) {
+    alert("Ingresaste valor inválido");
+    obSexo();
+  } else if (sexo == 1) {
+    sexo = "Masculino"
+  } else if (sexo == 2) {
+    sexo = "Femenino"
+  }
+  let confirmación = prompt(
+    "Seleccionó: " + sexo + ", ¿Es correcto? Escribe si o no"
+  ).toLocaleLowerCase().trim();
+  if (confirmación == "no") {
+    confirmación = 5;
+    confirmador(confirmación);
+  } else if (confirmación == "si") {
+    confirmador(confirmación);
+    dni[4] = ["Sexo", sexo];
+  } else {
+    alert("Ingresaste valor inválido");
+    obSexo();
+  }
+}
+
+function obConsolidar() {
+  let consolidar = parseInt(
+    prompt(
+      "¿Desea corregir algún dato? Escriba uno de los siguientes números: 1 Nombre: " +
+        nombre +
+        ", 2 Fecha de nacimiento: " +
+        fechaNacimiento +
+        ", 3 Número de documento: " +
+        numeroDoc +
+        ", 4 Altura: " +
+        altura +
+        ", 5 Sexo: " +
+        sexo +
+        ", 6 Todo está en orden, 7 Prefiero no confirmar"
+    )
+  );
+  if (consolidar >= 8 || consolidar <= 0) {
+    alert("Esa no es una opción");
+    obConsolidar();
+  } else {
+    switch (consolidar) {
+      case 1:
+        obNombre();
+        obConsolidar();
+        break;
+      case 2:
+        obNacimiento();
+        obConsolidar();
+        break;
+      case 3:
+        obNumDoc();
+        obConsolidar();
+        break;
+      case 4:
+        obAltura();
+        obConsolidar();
+        break;
+      case 5:
+        obSexo();
+        obConsolidar();
+        break;
+      case 6:
+        resultado = 1;
+        break;
+      case 7:
+        resultado = 2;
+      default:
+        alert("No ingreses carácteres inválidos");
+        obConsolidar();
+        break;
+    }
+  }
+}
+
+function confirmador(confirmación) {
+  switch (confirmación) {
+    case 1:
+      obNombre();
+      break;
+    case 2:
+      obNacimiento();
+      break;
+    case 3:
+      obNumDoc();
+      break;
+    case 4:
+      obAltura();
+      break;
+    case 5:
+      obSexo();
+      break;
+    case "si":
+      break;
+    default:
+      alert("Se ingresaron carácteres inválidos, revise lo que ha ingresado");
+      funcion;
+      break;
+  }
+}
